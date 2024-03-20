@@ -3,16 +3,10 @@ import java.util.Random;
 public class PasswordGeneration {
     public static void main(String[] args) {
 
-        int length = 8;
-        String numbers = "0123456789";
-        String symbol = "!,$,&,@,?";
-        String cap_letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String small_letter = "abcdefghijklmnopqrstuvwxyz";
-
-        String finalString = cap_letter + small_letter + numbers + symbol;
+        String str = "0123456789" + "!,$,&,@,?" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz";
         Random random = new Random();
-        char[] password = new char[length];
-        for (int i = 0; i < length; i++) password[i] = finalString.charAt(random.nextInt(finalString.length()));
+        char[] password = new char[8];
+        for (int i = 0; i < 8; i++) password[i] = str.charAt(random.nextInt(str.length()));
         System.out.println(password);
     }
 }
