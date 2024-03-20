@@ -8,5 +8,6 @@ public class Main {
         for (int i = 0; i < chArray.length; i++) {
             System.out.print(chArray[i]);
         }
+
     }
 }
