@@ -1,14 +1,39 @@
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class PasswordGeneration {
-    public static void main(String[] args) {
 
-        String finalString = "0123456789" + "!,$,&,@,?" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvwxyz";
-        Random random = new Random();
-        char[] password = new char[8];
-        for (int i = 0; i < 8; i++) {
-            password[i] = finalString.charAt(random.nextInt(finalString.length()));
+
+        private static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private static final String LOWER = UPPER.toLowerCase();
+        private static final String DIGITS = "0123456789";
+        private static final String SPECIAL_CHARS = "!@#$%^&*()_+{}[]";
+
+        private static final String ALL_CHARS = UPPER + LOWER + DIGITS + SPECIAL_CHARS;
+
+        private static SecureRandom random = new SecureRandom();
+
+
+
+        public static void main(String[] args) {
+
+            String randomPassword = generateRandomPassword(8);
+            System.out.println("Random Password: " + randomPassword);
         }
-        System.out.println(password);
+    public static String generateRandomPassword(int length) {
+
+        StringBuilder password = new StringBuilder(length);
+
+        password.append(UPPER.charAt(random.nextInt(UPPER.length())));
+        password.append(LOWER.charAt(random.nextInt(LOWER.length())));
+        password.append(DIGITS.charAt(random.nextInt(DIGITS.length())));
+        password.append(SPECIAL_CHARS.charAt(random.nextInt(SPECIAL_CHARS.length())));
+
+
+        for (int i = 4; i < length; i++) {
+            password.append(ALL_CHARS.charAt(random.nextInt(ALL_CHARS.length())));
+        }
+
+        return password.toString();
     }
 }
